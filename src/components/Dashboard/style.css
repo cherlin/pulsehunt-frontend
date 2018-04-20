@@ -1,4 +1,40 @@
 .dashboard-container {
-  width: 250px;
+  width: 300px;
   background-color: #CECECE;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container > * {
+  padding: 0 20px 20px;
+}
+
+.geo-container {
+  background-color: rgb(180, 180, 180);
+}
+
+.date-container {
+  background-color: #BEBEBE;
+}
+
+.instruction {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vertical-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-group {
+  display: flex;
+}
+
+.dashboard-button, .dashboard-input {
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  margin: 2px;
 }
