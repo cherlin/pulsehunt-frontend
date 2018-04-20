@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { changeCoords, changeAddress, changeDateInterval, episodesFetchSuccess } from '../../actions';
+import { changeCoords, changeAddress, changeDateTimeInterval, episodesFetchSuccess } from '../../actions';
 import './style.css';
 
 class Dashboard extends React.Component {
@@ -21,18 +21,21 @@ class Dashboard extends React.Component {
 
   setDate = (e) => {
     e.preventDefault();
-    const { changeDateInterval } = this.props;
+    const { changeDateTimeInterval } = this.props;
+    const dateFormat = 'YYYY-MM-DDTHH:mm'
+
     switch (e.target.id) {
       case 'today':
-      const today = moment().format('YYYY-MM-DD');
-      return changeDateInterval(today, today);
+        const todayNow = moment().format(dateFormat);
+        const todayEnd = moment().endOf('day').format(dateFormat);
+        return changeDateTimeInterval(todayNow, todayEnd);
       case 'tomorrow':
-      const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
-      return changeDateInterval(tomorrow, tomorrow);
+        const tomorrowStart = moment().add(1, 'days').startOf('day').format(dateFormat);
+        const tomorrowEnd = moment().add(1, 'days').endOf('day').format(dateFormat);
+        return changeDateTimeInterval(tomorrowStart, tomorrowEnd);
       default: 
-      console.log('handle other date here!');
+        console.log('handle other date here!');
     }
-    
   }
 
   render() {
@@ -82,7 +85,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeCoords: (latitude, longitude) => dispatch(changeCoords(latitude, longitude)),
   episodesFetchSuccess: (episodes) => dispatch(episodesFetchSuccess(episodes)),
   changeAddress: (address) => dispatch(changeAddress(address)),
-  changeDateInterval: (start, end) => dispatch(changeDateInterval(start, end)),
+  changeDateTimeInterval: (start, end) => dispatch(changeDateTimeInterval(start, end)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

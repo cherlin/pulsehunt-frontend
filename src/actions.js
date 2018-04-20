@@ -13,8 +13,8 @@ export const changeAddress = (address) => ({
   address,
 })
 
-export const changeDateInterval = (start, end) => ({
-  type: 'CHANGE_DATE_INTERVAL',
+export const changeDateTimeInterval = (start, end) => ({
+  type: 'CHANGE_DATETIME_INTERVAL',
   start,
   end,
 });

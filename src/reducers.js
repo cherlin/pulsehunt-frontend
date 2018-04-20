@@ -3,7 +3,9 @@ import { combineReducers } from 'redux';
 const defaultState = {
   filter: {
     location: {
-      setByUser: false,
+      setByUser: true,
+      latitude: 41.3949965,
+      longitude: 2.1976155,
     }
   }
 }
