@@ -17,6 +17,10 @@
   background-color: #BEBEBE;
 }
 
+.date-container.disabled {
+  opacity: 0.2;
+}
+
 .instruction {
   font-size: 1.2rem;
   font-weight: 700;

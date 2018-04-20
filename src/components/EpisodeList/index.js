@@ -1,12 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import EpisodeListItem from '../EpisodeListItem';
 import './style.css';
 
-export default class EpisodeList extends React.Component {
+class EpisodeList extends React.Component {
+  
   render() {
     return (
       <div className="episodelist-container">
-        <h1>Hello from EpisodeList</h1>
+        {this.props.episodes.filtered && this.props.episodes.filtered.map(episode => <EpisodeListItem key={episode._id} data={episode} />)}
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    episodes: state.episodes,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EpisodeList);

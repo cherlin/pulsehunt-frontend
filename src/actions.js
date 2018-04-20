@@ -3,13 +3,18 @@ export const changeCoords = (latitude, longitude) => ({
   latitude,
   longitude,
 });
+export const episodesFetchSuccess = (episodes) => ({
+  type: 'EPISODES_FETCH_SUCCESS',
+  episodes
+});
 
 export const changeAddress = (address) => ({
   type: 'CHANGE_ADDRESS',
   address,
 })
 
-export const changeDate = (date) => ({
-  type: 'CHANGE_DATE',
-  date
+export const changeDateInterval = (start, end) => ({
+  type: 'CHANGE_DATE_INTERVAL',
+  start,
+  end,
 });

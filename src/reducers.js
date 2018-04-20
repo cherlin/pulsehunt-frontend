@@ -1,14 +1,36 @@
 import { combineReducers } from 'redux';
 
-const filter = (state = {}, action) => {
-  if (action.type === 'CHANGE_COORDS') {
-    return { ...state, location: { latitude: action.latitude, longitude: action.longitude }}
-  } else if (action.type === 'CHANGE_DATE') return action.date;
-  return state;
+const defaultState = {
+  filter: {
+    location: {
+      setByUser: false,
+    }
+  }
+}
+
+const filter = (state = defaultState.filter, action) => {
+  switch (action.type) { 
+    case 'CHANGE_COORDS':
+    return { ...state, location: {...state.location, latitude: action.latitude, longitude: action.longitude, setByUser: true }}
+    case 'CHANGE_DATE_INTERVAL': 
+    return { ...state, date: { start: action.start, end: action.end } }
+    default:
+    return state;
+  }
 };
 
+const episodes = (state = {}, action) => {
+  switch (action.type) { 
+    case 'EPISODES_FETCH_SUCCESS':
+    return { ...state, filtered: [...action.episodes]}
+    default:
+    return state;
+  }
+}
+
 const reducers = combineReducers({
-  filter
+  filter,
+  episodes,
 });
 
 export default reducers;

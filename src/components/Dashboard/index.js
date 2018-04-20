@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeCoords, changeAddress, changeDate } from '../../actions';
+import moment from 'moment';
+import { changeCoords, changeAddress, changeDateInterval, episodesFetchSuccess } from '../../actions';
 import './style.css';
 
 class Dashboard extends React.Component {
@@ -11,11 +12,33 @@ class Dashboard extends React.Component {
       navigator.geolocation.getCurrentPosition((position) => {
         const {latitude, longitude} = position.coords;
         this.props.changeCoords(latitude, longitude);
-      }, (err) => console.log(err), { timeout: 8000, maximumAge: 30000 });
+        fetch(`http://localhost:3001/episodes?lat=${latitude}&lng=${longitude}`)
+          .then(episodes => episodes.json())
+          .then(episodes => this.props.episodesFetchSuccess(episodes));
+      }, logError, { timeout: 8000, maximumAge: 30000 });
     }
   }
 
+  setDate = (e) => {
+    e.preventDefault();
+    const { changeDateInterval } = this.props;
+    switch (e.target.id) {
+      case 'today':
+      const today = moment().format('YYYY-MM-DD');
+      return changeDateInterval(today, today);
+      case 'tomorrow':
+      const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
+      return changeDateInterval(tomorrow, tomorrow);
+      default: 
+      console.log('handle other date here!');
+    }
+    
+  }
+
   render() {
+    const dateStyle = this.props.filter.location.setByUser ? 'date-container' : 'date-container disabled';
+    const disabledButton = !this.props.filter.location.setByUser;
+
     return (
       <div className="dashboard-container">
         
@@ -27,12 +50,12 @@ class Dashboard extends React.Component {
           </form>
         </div>
 
-        <div className="date-container">
+        <div className={dateStyle}>
           <p className="instruction">Pick a date</p>
           <div className="vertical-group">
-            <button className="dashboard-button">TODAY</button>
-            <button className="dashboard-button">TOMORROW</button>
-            <button className="dashboard-button">OTHER</button>
+            <button className="dashboard-button" id="today" onClick={this.setDate} disabled={disabledButton}>TODAY</button>
+            <button className="dashboard-button" id="tomorrow" onClick={this.setDate} disabled={disabledButton}>TOMORROW</button>
+            <button className="dashboard-button" id="other" onClick={this.setDate} disabled={disabledButton}>OTHER</button>
           </div>
         </div>
 
@@ -45,6 +68,10 @@ const geolocationAvailable = () => {
   return ('geolocation' in navigator);
 }
 
+const logError = (err) => {
+  console.error(err);
+}
+
 const mapStateToProps = (state) => {
   return {
     filter: state.filter,
@@ -53,8 +80,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   changeCoords: (latitude, longitude) => dispatch(changeCoords(latitude, longitude)),
+  episodesFetchSuccess: (episodes) => dispatch(episodesFetchSuccess(episodes)),
   changeAddress: (address) => dispatch(changeAddress(address)),
-  changeDate: (date) => dispatch(changeDate(date)),
+  changeDateInterval: (start, end) => dispatch(changeDateInterval(start, end)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
