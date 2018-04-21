@@ -3,9 +3,10 @@ export const changeCoords = (latitude, longitude) => ({
   latitude,
   longitude,
 });
+
 export const episodesFetchSuccess = (episodes) => ({
   type: 'EPISODES_FETCH_SUCCESS',
-  episodes
+  episodes,
 });
 
 export const changeAddress = (address) => ({
