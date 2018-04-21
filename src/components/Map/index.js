@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GoogleMap from 'google-map-react';
-import MapMarker from '../MapMarker';
-import { changeDateTimeInterval, episodesFetchSuccess } from '../../actions';
+import { GoogleMap, withGoogleMap, Marker } from 'react-google-maps';
+// import MapMarker from '../MapMarker';
 import './style.css';
 
 class Map extends React.Component {
@@ -11,18 +10,24 @@ class Map extends React.Component {
     zoom: 13,
   };
 
-  render() {
+  boundMarker = (id) => () => {
+    console.log(id);
+  }
 
+  mapMarkers = episode => {
+    return <Marker key={episode._id} onMouseOver={this.boundMarker(episode._id)} position={{ lat: episode.location.coordinates[1], lng: episode.location.coordinates[0] }} name={episode.name}/>
+  }
+
+  render() {
 
     return (
       <div className="map-container">
       <GoogleMap
         center={{ lng: this.props.filter.location.longitude, lat: this.props.filter.location.latitude}}
-        zoom={this.props.zoom}>
+        defaultZoom={this.props.zoom}
+        >
 
-        {this.props.episodes.filtered.map(episode => {
-          return <MapMarker key={episode._id} lat={episode.location.coordinates[1]} lng={episode.location.coordinates[0]} name={episode.name}/>
-        })}
+        {this.props.episodes.filtered.map(this.mapMarkers)}
 
       </GoogleMap>
       </div>
@@ -37,9 +42,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  episodesFetchSuccess: (episodes) => dispatch(episodesFetchSuccess(episodes)),
-  changeDateTimeInterval: (start, end) => dispatch(changeDateTimeInterval(start, end)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+const wrappedMap = withGoogleMap(Map)
+export default connect(mapStateToProps)(wrappedMap);
