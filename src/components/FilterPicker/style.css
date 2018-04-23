@@ -1,0 +1,7 @@
+.filter-container {
+  background-color: #EEEEEE;
+}
+
+.filter-container.disabled {
+  opacity: 0.2;
+}

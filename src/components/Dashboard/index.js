@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationPicker from '../LocationPicker';
 import DatePicker from '../DatePicker';
+import FilterPicker from '../FilterPicker';
 import './style.css';
 
 const Dashboard = (props) => {
@@ -9,6 +10,7 @@ const Dashboard = (props) => {
 
       <LocationPicker />
       <DatePicker />
+      <FilterPicker />
 
     </div>
   );
