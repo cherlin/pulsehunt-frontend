@@ -1,0 +1,87 @@
+.episode-container {
+  flex: 1;
+  background-color: #EEEEEE;
+  display: flex;
+  flex-direction: column;
+}
+
+.episode-header {
+  height: 200px;
+  text-align: center;
+  color: #FFF;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close-episode-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white; 
+  color: black;
+  padding: 5px 10px;
+
+}
+
+.body-container .time {
+  display: flex;
+}
+
+.time {
+  border-bottom: 1px solid #000;
+}
+
+.time .timepoint {
+  padding: 10px;
+}
+
+.timepoint:not(:last-child) {
+  border-right: 1px solid #000;
+}
+
+.tags {
+  padding: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.tagslist {
+  list-style: none;
+  display: inline;
+  padding: 0;
+}
+
+.tagslist:first-child {
+  margin-left: 20px;
+}
+
+.tagslist li {
+  display: inline;
+  margin: 0 5px;
+  padding: 3px 7px;
+  background-color: #CECECE;
+  border-radius: 3px;
+}
+
+.episode-content {
+  padding: 20px;
+}
+
+.episode-desc {
+  margin-bottom: 20px;
+}
+
+.episode-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.attend-button {
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  border: none;
+  background-color: gray;
+  font-weight: 700;
+}

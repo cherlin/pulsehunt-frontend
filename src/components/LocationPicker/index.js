@@ -8,7 +8,7 @@ class LocationPicker extends React.Component {
 
   fetchEpisodes = () => {
     const {latitude, longitude} = this.props.filter.location
-    fetch(`http://localhost:3001/episodes?lat=${latitude}&lng=${longitude}`)
+    fetch(`http://localhost:3001/episodes?lat=${latitude}&lng=${longitude}&start=${Date.now()}`)
       .then(episodes => episodes.json())
       .then(episodes => this.props.episodesFetchSuccess(episodes))
       .catch(err => console.error(err));
@@ -16,7 +16,7 @@ class LocationPicker extends React.Component {
 
   getCoordsFromUserAgent = (e) => {
     e.preventDefault();
-    if (geolocationAvailable) {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         const {latitude, longitude} = position.coords;
         this.props.changeCoords(latitude, longitude);
@@ -26,6 +26,7 @@ class LocationPicker extends React.Component {
   }
 
   getCoordsAndAddressFromGoogle = (data) => {
+    if (!data) return;
     const { lat, lng } = data.location;
     const address = data.gmaps.formatted_address;
     this.props.changeCoords(lat, lng);
@@ -39,15 +40,11 @@ class LocationPicker extends React.Component {
         <p className="instruction">Choose your location</p>
         <form className="vertical-group">
           <button className="dashboard-button" onClick={this.getCoordsFromUserAgent}>GEOLOCATE ME!</button>
-          <Geosuggest onSuggestSelect={this.getCoordsAndAddressFromGoogle} />
+          <Geosuggest onSuggestSelect={this.getCoordsAndAddressFromGoogle} placeholder={this.props.filter.location.address || 'Type a location'}/>
         </form>
       </div>
     );
   }
-}
-
-const geolocationAvailable = () => {
-  return ('geolocation' in navigator);
 }
 
 const logError = (err) => {

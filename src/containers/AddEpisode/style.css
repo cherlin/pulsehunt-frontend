@@ -1,0 +1,51 @@
+.add-episode-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.add-episode-content {
+  display: flex;
+}
+
+.form-part {
+  flex: 2;
+  padding: 20px;
+}
+
+.image-part {
+  flex: 1;
+  padding: 20px;
+}
+
+.image-grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(200px, auto);
+  margin-bottom: 20px;
+}
+
+.image-item {
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+}
+
+.picked {
+  opacity: 1;
+}
+
+.dropzone {
+  width: 100%;
+  border: 2px dashed #CCC;
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { GoogleMap, withGoogleMap, Marker } from 'react-google-maps';
-// import MapMarker from '../MapMarker';
 import './style.css';
 
 class Map extends React.Component {

@@ -21,7 +21,7 @@ class DatePicker extends React.Component {
   setDate = (e) => {
     e.preventDefault();
     const { changeDateTimeInterval } = this.props;
-    const dateFormat = 'YYYY-MM-DDTHH:mm'
+    const dateFormat = 'x'
 
     switch (e.target.id) {
       case 'today':
@@ -36,22 +36,26 @@ class DatePicker extends React.Component {
         changeDateTimeInterval(tomorrowStart, tomorrowEnd);
         this.fetchEpisodes(tomorrowStart, tomorrowEnd);
         break;
+      case 'this-week':
+        const now = moment().format(dateFormat);
+        const weekEnd = moment().endOf('week').format(dateFormat);
+        changeDateTimeInterval(now, weekEnd);
+        this.fetchEpisodes(now, weekEnd);
+        break;
       default: 
         console.log('handle other date here!');
     }
   }
 
   render() {
-    const dateStyle = this.props.filter.location.setByUser ? 'date-container' : 'date-container disabled';
-    const disabledButton = !this.props.filter.location.setByUser;
-
     return (
-      <div className={dateStyle}>
-        <p className="instruction">Pick a date</p>
+      <div className="date-container">
+        <p className="instruction">Choose when</p>
         <div className="vertical-group">
-          <button className="dashboard-button" id="today" onClick={this.setDate} disabled={disabledButton}>TODAY</button>
-          <button className="dashboard-button" id="tomorrow" onClick={this.setDate} disabled={disabledButton}>TOMORROW</button>
-          <button className="dashboard-button" id="other" onClick={this.setDate} disabled={disabledButton}>OTHER</button>
+          <button className="dashboard-button" id="today" onClick={this.setDate}>TODAY</button>
+          <button className="dashboard-button" id="tomorrow" onClick={this.setDate}>TOMORROW</button>
+          <button className="dashboard-button" id="this-week" onClick={this.setDate}>THIS WEEK</button>
+          <button className="dashboard-button" id="other" onClick={this.setDate}>OTHER</button>
         </div>
       </div>
     );
@@ -62,6 +66,7 @@ class DatePicker extends React.Component {
 const mapStateToProps = (state) => {
   return {
     filter: state.filter,
+    filtered: state.episodes.filtered,
   };
 };
 

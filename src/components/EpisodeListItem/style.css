@@ -2,4 +2,13 @@
   background-color: #E3E3E3;
   padding: 20px;
   margin-bottom: 5px;
+  display: flex;
+}
+
+.episode-image {
+  margin-right: 20px;
+}
+
+.episode-meta h2 {
+  margin: 0 0 10px;
 }

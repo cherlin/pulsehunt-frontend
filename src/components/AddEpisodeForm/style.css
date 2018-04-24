@@ -1,0 +1,35 @@
+.add-episode-form-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0;
+}
+
+.form-group input, textarea {
+  margin-bottom: 5px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-column {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-column label {
+  margin-right: 10px;
+}
+
+input, textarea, button[type="submit"] {
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-family: Roboto, sans-serif;
+}
+
