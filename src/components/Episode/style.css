@@ -1,6 +1,6 @@
 .episode-container {
   flex: 1;
-  background-color: #EEEEEE;
+  background-color: rgb(248, 248, 248);
   display: flex;
   flex-direction: column;
 }
@@ -14,16 +14,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 50px;
 }
 
 .close-episode-card {
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: white; 
-  color: black;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--black);
   padding: 5px 10px;
+}
 
+.close-episode-card a {
+  text-decoration: none;
 }
 
 .body-container .time {
@@ -31,20 +35,16 @@
 }
 
 .time {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--granite);
 }
 
 .time .timepoint {
-  padding: 10px;
-}
-
-.timepoint:not(:last-child) {
-  border-right: 1px solid #000;
+  padding: 10px 20px;
 }
 
 .tags {
-  padding: 10px;
-  border-bottom: 1px solid #000;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--granite);
 }
 
 .tagslist {
@@ -61,7 +61,7 @@
   display: inline;
   margin: 0 5px;
   padding: 3px 7px;
-  background-color: #CECECE;
+  background-color: var(--granite);
   border-radius: 3px;
 }
 
@@ -82,6 +82,6 @@
   font-size: 1.2rem;
   padding: 12px 20px;
   border: none;
-  background-color: gray;
-  font-weight: 700;
+  background-color: var(--pine);
+  color: white;
 }

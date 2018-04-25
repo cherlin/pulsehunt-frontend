@@ -1,5 +1,6 @@
 import React from 'react'
 import Geosuggest from 'react-geosuggest'
+import './style.css';
 
 export default class CreateGeoSuggest extends React.Component {
   render() {
@@ -10,7 +11,6 @@ export default class CreateGeoSuggest extends React.Component {
     } = this.props.location.address
     return (
     <Geosuggest
-      className="address"
       ref={el => this._geoSuggest = el} // eslint-disable-line
       placeholder={placeholder}
       inputClassName="address"

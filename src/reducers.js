@@ -8,7 +8,6 @@ const defaultState = {
       pickedPhoto: '',
       uploadSuccess: false,
     }
-
   },
   filter: {
     location: { // Defaults to Barcelona
@@ -51,10 +50,11 @@ const app = (state = defaultState.app, action) => {
       return state;
   }
 };
+
 const filter = (state = defaultState.filter, action) => {
   switch (action.type) { 
     case 'CHANGE_COORDS':
-      return { ...state, location: {...state.location, latitude: action.latitude, longitude: action.longitude }}
+      return { ...state, location: {...state.location, latitude: action.latitude, longitude: action.longitude, address: '' }}
     case 'CHANGE_ADDRESS':
       return { ...state, location: {...state.location, address: action.address }}
     case 'CHANGE_DATETIME_INTERVAL': 

@@ -1,5 +1,5 @@
 .episodelist-container {
   width: 600px;
-  background-color: #CECECE;
-  border-right: 1px solid #000;
+  background-color: white;
+  padding: 20px;
 }

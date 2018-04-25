@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
+:root {
+  --blue-sky: #4CB5F5;
+  --pine: #34675C;
+  --granite: #B7B8B6;
+  --fields: #B3C100;
+  --black: rgba(0, 0, 0, 0.8);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -12,6 +20,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   height: 100%;
+  color: var(--black);
 }
 
 #root {
@@ -26,6 +35,6 @@ body {
 
 a {
   text-decoration: underline;
-  color: black;
+  color: var(--black);
   font-weight: 700;
 }

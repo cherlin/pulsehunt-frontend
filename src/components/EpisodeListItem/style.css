@@ -1,8 +1,9 @@
 .episode-list-item-container {
-  background-color: #E3E3E3;
+  background-color: rgb(248, 248, 248);
   padding: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
+  border-left: 5px solid var(--blue-sky)
 }
 
 .episode-image {
@@ -10,5 +11,10 @@
 }
 
 .episode-meta h2 {
-  margin: 0 0 10px;
+  font-size: 1.3rem;
+  margin: 2px 0 15px;
+}
+
+.episode-meta a {
+  text-decoration: none;
 }

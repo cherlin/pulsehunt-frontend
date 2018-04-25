@@ -38,9 +38,9 @@ class LocationPicker extends React.Component {
     return (
       <div className="geo-container">
         <p className="instruction">Choose your location</p>
-        <form className="vertical-group">
-          <button className="dashboard-button" onClick={this.getCoordsFromUserAgent}>GEOLOCATE ME!</button>
-          <Geosuggest onSuggestSelect={this.getCoordsAndAddressFromGoogle} placeholder={this.props.filter.location.address || 'Type a location'}/>
+        <form className="horizontal-group">
+          <button className="geolocate-button" onClick={this.getCoordsFromUserAgent}><img alt="geolocation" className="geolocate-icon" src="/images/navigation.svg" /></button>
+          <Geosuggest onSuggestSelect={this.getCoordsAndAddressFromGoogle} placeholder="Type a location"/>
         </form>
       </div>
     );

@@ -8,9 +8,9 @@ export default class ListSort extends React.Component {
       <div className="list-sort-container">
         <p className="instruction">SORT BY </p>
         <div className="sorting-buttons">
-          <button className="dashboard-button">DISTANCE</button>
-          <button className="dashboard-button">DATE & TIME</button>
-          <button className="dashboard-button">SWEAT SCORE</button>
+          <button className="list-sort-button">DISTANCE</button>
+          <button className="list-sort-button">DATE & TIME</button>
+          <button className="list-sort-button">SWEAT SCORE</button>
         </div>
       </div>
     );
