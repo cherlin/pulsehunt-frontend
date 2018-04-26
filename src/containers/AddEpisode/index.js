@@ -66,9 +66,6 @@ class AddEpisode extends React.Component {
 
     return (
         <div className="add-episode-container">
-        <header className="add-episode-header">
-          <h1>Add new Workout Episode</h1>
-        </header>
         <div className="add-episode-content">
           <div className="form-part">
             <h2>Workout Details</h2>

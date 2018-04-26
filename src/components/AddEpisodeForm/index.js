@@ -8,27 +8,29 @@ let AddEpisodeForm = props => {
   return (
     <form onSubmit={handleSubmit} className="add-episode-form-container">
       <div className="form-group">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name of Workout Session (*)</label>
         <Field name="name" component="input" type="text" placeholder="Ruffie Workout" required/>
       </div>
       <div className="form-group">
-        <label htmlFor="address">Address</label>
+        <label htmlFor="address">Address (*)</label>
         <Fields names={['location.address', 'location.latitude', 'location.longitude']} component={CreateGeoSuggest} placeholder="Enter Location" required/>
       </div>
       <div className="form-group">
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">Description (*)</label>
         <Field name="description" component="textarea" type="text" rows="4" placeholder="A sweaty session to start of the weekend, using your body and your classmates as resistance. Bring yourself and a good mood, and we'll take care of the rest" />
       </div>
       <div className="form-group">
-        <label htmlFor="date">Date</label>
-        <Field name="date" component="input" type="date" required/>
         <div className="form-column">
-          <div>
-            <label htmlFor="startTime">Start</label>
+          <div className="form-group">
+            <label htmlFor="date">Date (*)</label>
+            <Field name="date" component="input" type="date" required/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="startTime">Start (*)</label>
             <Field name="startTime" component="input" type="time" required/>
           </div>
-          <div>
-            <label htmlFor="endTime">End</label>
+          <div className="form-group">
+            <label htmlFor="endTime">End (*)</label>
             <Field name="endTime" component="input" type="time" required/>
           </div>
         </div>
