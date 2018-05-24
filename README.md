@@ -26,17 +26,13 @@ In order to run this frontend, you need [the corresponding backend](https://gith
 * [React](https://reactjs.org)
 * [Redux](https://redux.js.org)
 
-## TODOs
-* The code needs some heavy refactoring, especially when it comes to centralizing API call functionality (Redux middleware?).
-* Add user and trainer authentication.
+## Upcoming
+* GraphQL implementation.
+* Authentication using OAuth and JWT.
 * Mobile responsiveness.
 * Create a landing page.
 * Add profile pages for users and trainers.
-* Create interaction: A user signalling that she wants to attend a workout should notify the workout owner (trainer).
-* ...
-* ...
-* and so on.
-
+* Management features for trainers.
 
 ## Feedback
 If you have any feedback, send me an [email](mailto:christofer.herlin@gmail.com) or open an issue on the repo.
